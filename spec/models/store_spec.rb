@@ -32,5 +32,12 @@ RSpec.describe Store, type: :model do
 
       expect(store.geo_location).to eq(geo_location)
     end
+
+    it 'should have many items' do
+      store = create :store
+      items = create_list :item, 5, store: store
+
+      expect(store.items).to eq(items)
+    end
   end
 end

@@ -7,4 +7,5 @@ class Store < ApplicationRecord
   # Associations
   belongs_to :seller
   has_one :geo_location, as: :located
+  has_many :items
 end
