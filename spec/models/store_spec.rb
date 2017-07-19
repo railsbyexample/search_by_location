@@ -25,5 +25,12 @@ RSpec.describe Store, type: :model do
 
       expect(store.seller).to eq(seller)
     end
+
+    it 'should have a geo_location' do
+      geo_location = create :geo_location
+      store = create :store, geo_location: geo_location
+
+      expect(store.geo_location).to eq(geo_location)
+    end
   end
 end
