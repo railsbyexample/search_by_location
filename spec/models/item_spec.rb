@@ -17,4 +17,13 @@ RSpec.describe Item, type: :model do
       expect(item).to be_valid
     end
   end
+
+  describe 'associations' do
+    it 'should belong to a store' do
+      store = create :store
+      item = create :item, store: store
+
+      expect(item.store).to eq(store)
+    end
+  end
 end
