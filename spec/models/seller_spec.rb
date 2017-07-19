@@ -1,5 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe Seller, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  it 'has a valid factory' do
+    seller = build :seller
+    expect(seller).to be_valid
+  end
 end
