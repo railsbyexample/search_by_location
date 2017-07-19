@@ -5,4 +5,25 @@ RSpec.describe Store, type: :model do
     store = build :store
     expect(store).to be_valid
   end
+
+  describe 'validations' do
+    it 'should be invalid if an attribute is missing' do
+      store = build :store, description: ''
+      expect(store).to be_invalid
+    end
+
+    it 'should be valid with all attributes' do
+      store = build :store
+      expect(store).to be_valid
+    end
+  end
+
+  describe 'associations' do
+    it 'should have a seller' do
+      seller = create :seller
+      store = create :store, seller: seller
+
+      expect(store.seller).to eq(seller)
+    end
+  end
 end
