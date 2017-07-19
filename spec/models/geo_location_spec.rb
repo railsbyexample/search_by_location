@@ -7,19 +7,19 @@ RSpec.describe GeoLocation, type: :model do
   end
 
   describe 'validations' do
-    it 'is invalid wo all fields' do
+    it 'should be invalid with a missing attribute' do
       geo_location = build :geo_location, latitude: nil
       expect(geo_location).to be_invalid
     end
 
-    it 'is valid w all fields' do
+    it 'should be valid with all attributes' do
       geo_location = build :geo_location
       expect(geo_location).to be_valid
     end
   end
 
   describe 'associations' do
-    it 'has one store' do
+    it 'should belong to a store (polymorphic)' do
       geo_location = create :geo_location
 
       store = create :store, geo_location: geo_location
