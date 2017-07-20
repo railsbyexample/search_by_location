@@ -26,4 +26,11 @@ RSpec.describe Item, type: :model do
       expect(item.store).to eq(store)
     end
   end
+
+  describe 'geocoder' do
+    it 'should accept near query' do
+      gl = Item.near([40.7127837, -74.00594130000002], 100)
+      expect(gl).to be_truthy
+    end
+  end
 end
