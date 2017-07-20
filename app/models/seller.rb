@@ -5,5 +5,5 @@ class Seller < ApplicationRecord
   validates :description, presence: true
 
   # Associations
-  has_many :stores
+  has_many :stores, dependent: :destroy
 end
