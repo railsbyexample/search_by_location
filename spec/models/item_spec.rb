@@ -30,24 +30,18 @@ RSpec.describe Item, type: :model do
   describe 'geocoder' do
     it 'should accept near query' do
       # Add some known locations
-      new_york = create :geo_location,
-                        label: 'New York',
-                        latitude: 40.7127837,
-                        longitude: -74.00594130000002
-      # Los Angeles
-      los_angeles = create :geo_location,
-                           label: 'Los Angeles',
-                           latitude: 34.0522342,
-                           longitude: -118.2436849
-      # Philadelphia
-      philly = [39.9525839, -75.16522150000003]
+      new_york = create :geo_location, :new_york
+      los_angeles = create :geo_location, :los_angeles
+      philly = build :geo_location, :philly
       # Add some records (NY and LA)
-      new_york_items = create_list :item, 5,
-                                   store: create(:store, geo_location: new_york)
+      new_york_items =
+        create_list :item, 5, store: create(:store, geo_location: new_york)
       create_list :item, 5, store: create(:store, geo_location: los_angeles)
 
+      # Find items within 100 miles from Philly
       near_philly = Item.near(philly, 100)
 
+      # Items should be those in New York
       expect(near_philly.map(&:id).sort)
         .to eq(new_york_items.map(&:id).sort)
     end
