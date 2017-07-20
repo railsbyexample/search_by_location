@@ -17,6 +17,11 @@ gem 'jbuilder', '~> 2.5'
 # Use Rack CORS for handling Cross-Origin Resource Sharing (CORS), making cross-origin AJAX possible
 gem 'rack-cors'
 
+# Use posgresql full_text_search
+gem 'pg_search'
+# Use GeoCoder for distance queries
+gem 'geocoder'
+
 group :development, :test do
   # Use rubocop for linting and static analysis
   gem 'rubocop', '~> 0.49.1', require: false

@@ -27,4 +27,11 @@ RSpec.describe GeoLocation, type: :model do
       expect(geo_location.located).to eq(store)
     end
   end
+
+  describe 'geocoder' do
+    it 'should accept near query' do
+      gl = GeoLocation.near([40.7127837, -74.00594130000002], 100)
+      expect(gl).to be_truthy
+    end
+  end
 end
