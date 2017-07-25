@@ -6,6 +6,6 @@ class Store < ApplicationRecord
 
   # Associations
   belongs_to :seller
-  has_one :geo_location, as: :located, dependent: :destroy
+  belongs_to :geo_location
   has_many :items, dependent: :destroy
 end

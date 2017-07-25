@@ -5,6 +5,7 @@ class CreateStores < ActiveRecord::Migration[5.1]
       t.string :name, limit: 50
       t.text :description, limit: 500
       t.references :seller, foreign_key: true
+      t.references :geo_location, foreign_key: true
 
       t.timestamps
     end

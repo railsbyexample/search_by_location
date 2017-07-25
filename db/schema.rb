@@ -20,12 +20,10 @@ ActiveRecord::Schema.define(version: 20170719221755) do
     t.float "longitude"
     t.string "label"
     t.string "google_place_id"
-    t.string "located_type"
-    t.bigint "located_id"
+    t.json "google_address_components"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["latitude", "longitude"], name: "index_geo_locations_on_latitude_and_longitude"
-    t.index ["located_type", "located_id"], name: "index_geo_locations_on_located_type_and_located_id"
   end
 
   create_table "items", force: :cascade do |t|
@@ -48,11 +46,14 @@ ActiveRecord::Schema.define(version: 20170719221755) do
     t.string "name", limit: 50
     t.text "description"
     t.bigint "seller_id"
+    t.bigint "geo_location_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["geo_location_id"], name: "index_stores_on_geo_location_id"
     t.index ["seller_id"], name: "index_stores_on_seller_id"
   end
 
   add_foreign_key "items", "stores"
+  add_foreign_key "stores", "geo_locations"
   add_foreign_key "stores", "sellers"
 end
