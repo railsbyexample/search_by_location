@@ -3,7 +3,7 @@ FactoryGirl.define do
     latitude 1.5
     longitude 1.5
     label 'MyString'
-    google_place_id 'MyString'
+    google_place_id { SecureRandom.uuid }
 
     trait :new_york do
       label 'New York'
