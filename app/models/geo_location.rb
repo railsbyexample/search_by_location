@@ -1,6 +1,6 @@
 # GeoLocation model
 class GeoLocation < ApplicationRecord
-  belongs_to :located, polymorphic: true
+  has_many :stores
 
   validates :label, presence: true
   validates :latitude, presence: true

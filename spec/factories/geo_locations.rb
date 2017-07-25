@@ -4,7 +4,6 @@ FactoryGirl.define do
     longitude 1.5
     label 'MyString'
     google_place_id 'MyString'
-    located { create :store }
 
     trait :new_york do
       label 'New York'

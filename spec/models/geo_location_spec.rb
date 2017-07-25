@@ -19,12 +19,12 @@ RSpec.describe GeoLocation, type: :model do
   end
 
   describe 'associations' do
-    it 'should belong to a store (polymorphic)' do
+    it 'should have many stores' do
       geo_location = create :geo_location
 
       store = create :store, geo_location: geo_location
 
-      expect(geo_location.located).to eq(store)
+      expect(geo_location.stores.first).to eq(store)
     end
   end
 
