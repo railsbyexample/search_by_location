@@ -14,7 +14,7 @@ And all the items near a location need to be filtered. It has to be through a sc
 
 ## The solution
 
-Basically an `ActiveRecord` I still need to understand better, found it and tweaked it from [this StackOverflow answer](https://stackoverflow.com/questions/12298836/rails-inner-join-combined-with-geocoding-gem).
+Basically an `ActiveRecord` query, found it and tweaked it from [this StackOverflow answer](https://stackoverflow.com/questions/12298836/rails-inner-join-combined-with-geocoding-gem).
 
 ```ruby
   # app/models/item.rb
