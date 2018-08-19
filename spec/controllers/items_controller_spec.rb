@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe ItemsController, :focus, type: :controller do
+RSpec.describe ItemsController, type: :controller do
   describe 'GET #index' do
     it 'returns a success response' do
       get :index
