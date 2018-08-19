@@ -1,6 +1,6 @@
 # Location search
 
-A little experiment with `ActiveRecord` to build a location search to solve a problem from a private project. The changes touched a lot of surface in said project so I preferred to achieve what I needed before introducing the other project.
+A little experiment with `ActiveRecord` to build a location search to solve a problem from a private project. The changes touched a lot of surface in said project so I preferred to achieve what I needed before introducing the other project. A [working sample can be found here](https://rails-location-search.herokuapp.com/)
 
 ## The problem
 
