@@ -25,6 +25,9 @@ gem 'geocoder'
 # Use haml for html templates
 gem 'haml-rails'
 
+# Use Faker for  values
+gem 'faker', '~> 1.7'
+
 group :development, :test do
   # Use rubocop for linting and static analysis
   gem 'rubocop', '~> 0.49.1', require: false
