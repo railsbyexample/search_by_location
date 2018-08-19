@@ -1,0 +1,33 @@
+%h1 Rails Location Search
+
+%h2 Items
+
+%div
+  %h3 Filter by location
+  %form{ method: 'get', action: '/items' }
+    %select{ name: 'geo_location_id' }
+      %option{ value: '' } Select a location
+      - GeoLocation.all.each do |geo_location|
+        %option{ value: geo_location.id }= geo_location.label
+    %input{ name: 'distance', placeholder: 'Enter a distance in miles...' }
+    %button{ type: 'submit' } Find
+
+%div
+  %h3 Results
+  - if @items.length == 0
+    %p No results found for your search
+  %table
+    %th
+      %tr
+        %td
+          %strong Item
+        %td
+          %strong Store
+        %td
+          %strong Location
+    %tb
+      - @items.each do |item|
+        %tr
+          %td= item.name
+          %td= item.store.name
+          %td= item.store.geo_location.label
