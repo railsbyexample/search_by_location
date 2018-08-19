@@ -1,0 +1,44 @@
+%h1 Rails Location Search
+%div
+  = link_to 'built by perezperret', 'http://perezperret.com', { target: '_blank', class: 'navlink' }
+  = link_to 'view source', 'https://github.com/perezperret/activerecord_location_search', { target: '_blank', class: 'navlink' }
+%br
+
+.filter-box
+  %h3.filter-box_title Filter by location
+  = form_tag '/items', method: 'get', class: 'form' do
+    .form_fields
+      .form_group
+        = label_tag 'geo_location_id', 'Location'
+        = select_tag 'geo_location_id',
+            options_for_select(GeoLocation.all.map { |gl| [gl.label, gl.id] }),
+            include_blank: true
+
+      .form_group
+        = label_tag 'distance', 'Distance (Mi)'
+        = text_field_tag 'distance'
+
+    .form_submit
+      %button{ type: 'submit' } Find
+
+.content
+  %h3 Results
+  - if @items.length == 0
+    %p No results found for your search
+  - else
+    %table
+      %tr
+        %th
+          %strong Item
+        %th
+          %strong Seller
+        %th
+          %strong Store
+        %th
+          %strong Location
+      - @items.each do |item|
+        %tr
+          %td= item.name
+          %td= item.store.seller.name
+          %td= item.store.name
+          %td= item.store.geo_location.label

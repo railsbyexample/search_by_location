@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 git_source(:github) do |repo_name|
-  repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?("/")
+  repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?('/')
   "https://github.com/#{repo_name}.git"
 end
 
@@ -22,6 +22,12 @@ gem 'pg_search'
 # Use GeoCoder for distance queries
 gem 'geocoder'
 
+# Use haml for html templates
+gem 'haml-rails'
+
+# Use Faker for  values
+gem 'faker', '~> 1.7'
+
 group :development, :test do
   # Use rubocop for linting and static analysis
   gem 'rubocop', '~> 0.49.1', require: false
@@ -31,8 +37,6 @@ group :development, :test do
   gem 'rails-controller-testing'
   # Use FactoryGirl to replace fixtures with factories
   gem 'factory_girl_rails', '~> 4.0'
-  # Use Faker for factory values
-  gem 'faker', '~> 1.7'
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
 end
