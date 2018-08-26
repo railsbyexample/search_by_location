@@ -3,8 +3,15 @@ body {
 }
 
 .content {
+  overflow-x: scroll;
   max-width: 700px;
   padding: 1rem;
+}
+
+.content-title {
+  padding-top: 1rem;
+  padding-left: 1rem;
+  margin-bottom: 0;
 }
 
 .filter-box {
@@ -42,4 +49,8 @@ body {
 
 .navlink {
   margin-right: 1rem;
+}
+
+tr:nth-child(even) {
+  background: #ccc;
 }

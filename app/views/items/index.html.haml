@@ -21,8 +21,9 @@
     .form_submit
       %button{ type: 'submit' } Find
 
+
+%h3.content-title Results
 .content
-  %h3 Results
   - if @items.length == 0
     %p No results found for your search
   - else
