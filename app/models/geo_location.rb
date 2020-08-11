@@ -8,11 +8,4 @@ class GeoLocation < ApplicationRecord
   validates :google_place_id, presence: true, uniqueness: true
 
   reverse_geocoded_by :latitude, :longitude
-
-  def self.filtered_by(type)
-    belongs_to type,
-               foreign_key: :located_id,
-               foreign_type: type.to_s.capitalize
-    where(located_type: type.to_s.capitalize).joins(type)
-  end
 end

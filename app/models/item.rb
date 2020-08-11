@@ -9,8 +9,8 @@ class Item < ApplicationRecord
 
   # Scopes
   scope :near, (lambda do |location, distance|
-    Item.includes(store: :geo_location)
-        .references(:geo_location)
-        .merge(GeoLocation.near(location, distance))
+    includes(store: :geo_location)
+      .references(:geo_location)
+      .merge(GeoLocation.near(location, distance))
   end)
 end

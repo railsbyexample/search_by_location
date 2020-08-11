@@ -7,18 +7,16 @@ end
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 5.1.2'
+gem 'rails', '~> 6.0'
 # Use postgresql as the database for Active Record
 gem 'pg', '~> 0.18'
 # Use Puma as the app server
 gem 'puma', '~> 3.7'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
-gem 'jbuilder', '~> 2.5'
+# gem 'jbuilder', '~> 2.5'
 # Use Rack CORS for handling Cross-Origin Resource Sharing (CORS), making cross-origin AJAX possible
 gem 'rack-cors'
 
-# Use posgresql full_text_search
-gem 'pg_search'
 # Use GeoCoder for distance queries
 gem 'geocoder'
 
@@ -30,13 +28,13 @@ gem 'faker', '~> 1.7'
 
 group :development, :test do
   # Use rubocop for linting and static analysis
-  gem 'rubocop', '~> 0.49.1', require: false
+  gem 'rubocop', require: false
   # Use rspec for testing
-  gem 'rspec-rails', '~> 3.5'
+  gem 'rspec-rails'
   # Use controller testing helpers
   gem 'rails-controller-testing'
   # Use FactoryBot to replace fixtures with factories
-  gem 'factory_bot_rails', '~> 4.0'
+  gem 'factory_bot_rails'
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
 end
