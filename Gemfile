@@ -23,8 +23,11 @@ gem 'geocoder'
 # Use haml for html templates
 gem 'haml-rails'
 
-# Use Faker for  values
+# Use Faker for sample data
 gem 'faker', '~> 1.7'
+
+# Use kaminari for pagination
+gem 'kaminari'
 
 group :development, :test do
   # Use rubocop for linting and static analysis

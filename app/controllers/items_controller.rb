@@ -2,6 +2,7 @@ class ItemsController < ApplicationController
   def index
     @items = Item.all.includes(store: %i[geo_location seller])
                  .yield_self(&method(:filter_by_location))
+                 .page(params[:page])
   end
 
   private

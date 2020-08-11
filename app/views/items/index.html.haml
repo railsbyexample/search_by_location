@@ -3,9 +3,9 @@
 = form_tag '/items', method: 'get', class: 'form' do
   %div
     = label_tag 'geo_location_id', 'Location'
-    = select_tag 'geo_location_id',
-        options_for_select(GeoLocation.all.map { |gl| [gl.label, gl.id] }, params[:geo_location_id]),
-        include_blank: true
+    = select_tag 'geo_location_id', options_for_geo_location_select,
+        include_blank: 'All'
+
   %div
     = label_tag 'distance', 'Distance (Mi, default 2)'
     = text_field_tag 'distance', params[:distance]
@@ -28,4 +28,9 @@
       %tr
         %td= item.name
         %td= item.store.seller.name
-        %td= item.store.geo_location.label
+        %td
+          = item.store.geo_location.label
+          - if params[:geo_location_id].present?
+            (#{format('%<distance>.2f', distance: item.distance)} mi)
+
+= paginate @items
