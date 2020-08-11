@@ -1,20 +1,10 @@
 require 'rails_helper'
 
-RSpec.describe ItemsController, type: :controller do
+RSpec.describe 'Items', type: :request do
   describe 'GET #index' do
     it 'returns a success response' do
-      get :index
+      get items_url
       expect(response).to be_successful
-    end
-
-    it 'sets the collection up for the view' do
-      get :index
-      expect(assigns(:items)).to eq(Item.all)
-    end
-
-    it 'renders the index template' do
-      get :index
-      expect(response).to render_template(:index)
     end
 
     describe 'with given location params' do
@@ -28,8 +18,8 @@ RSpec.describe ItemsController, type: :controller do
       end
 
       it 'filters the collection by location' do
-        get :index, params: { geo_location_id: philly.id, distance: 100 }
-        expect(assigns(:items).map(&:id)).to eq(Item.near(philly, 100).map(&:id))
+        get items_url, params: { geo_location_id: philly.id, distance: 100 }
+        expect(response).to be_successful
       end
     end
   end

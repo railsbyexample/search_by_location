@@ -30,6 +30,8 @@ gem 'faker', '~> 1.7'
 gem 'kaminari'
 
 group :development, :test do
+  # Use capybara for feature specs
+  gem 'capybara'
   # Use rubocop for linting and static analysis
   gem 'rubocop', require: false
   # Use rspec for testing
