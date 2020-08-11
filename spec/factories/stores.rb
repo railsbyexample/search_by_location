@@ -1,7 +1,7 @@
-FactoryGirl.define do
+FactoryBot.define do
   factory :store do
-    name 'MyString'
-    description 'MyText'
+    name { 'MyString' }
+    description { 'MyText' }
     seller { create :seller }
     geo_location { create :geo_location }
   end

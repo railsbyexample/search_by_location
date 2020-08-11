@@ -1,7 +1,7 @@
-FactoryGirl.define do
+FactoryBot.define do
   factory :item do
-    name 'MyString'
-    description 'MyText'
+    name { 'MyString' }
+    description { 'MyText' }
     store { create :store }
   end
 end
