@@ -2,8 +2,7 @@ FactoryBot.define do
   factory :geo_location do
     latitude { 1.5 }
     longitude { 1.5 }
-    label { 'MyString' }
-    google_place_id { SecureRandom.uuid }
+    label { 'Caracas' }
 
     trait :new_york do
       label { 'New York' }

@@ -1,32 +1,33 @@
 require 'faker'
-require_relative './seeds/goog_places'
+require_relative './seeds/sample_data'
 
-20.times do
-  Seller.create!(
-    name: Faker::Company.name,
-    description: Faker::Lorem.paragraph.truncate(500)
-  )
-end
-
-GOOG_PLACES.each { |goog_place| GeoLocation.create!(goog_place) }
-
-Seller.all.each do |seller|
-  rand(1..5).times do
-    Store.create!(
-      seller: seller,
-      name: Faker::Address.street_name,
-      description: Faker::Lorem.paragraph.truncate(500),
-      geo_location: GeoLocation.order('RANDOM()').first
-    )
+ActiveRecord::Base.transaction do
+  sellers = SELLERS.map do |seller|
+    Seller.create!(name: seller, description: Faker::Lorem.paragraph.truncate(500))
   end
-end
 
-Store.all.each do |store|
-  rand(1..5).times do
-    Item.create!(
-      store: store,
-      name: "#{Faker::Appliance.brand} #{Faker::Appliance.equipment}",
-      description: Faker::Lorem.paragraph.truncate(500)
-    )
+  geo_locations = GEO_LOCATIONS.map do |geo_location|
+    GeoLocation.create!(geo_location)
+  end
+
+  geo_locations.each do |geo_location|
+    sellers.sample(rand(3..5)).each do |seller|
+      Store.create!(
+        seller: seller,
+        name: geo_location.label,
+        description: Faker::Lorem.paragraph.truncate(500),
+        geo_location: geo_location
+      )
+    end
+  end
+
+  Store.all.each do |store|
+    ITEMS.sample(rand(1..5)).each do |item|
+      Item.create!(
+        store: store,
+        name: item,
+        description: Faker::Lorem.paragraph.truncate(500)
+      )
+    end
   end
 end

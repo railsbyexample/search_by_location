@@ -5,8 +5,6 @@ class CreateGeoLocations < ActiveRecord::Migration[5.1]
       t.float :latitude
       t.float :longitude
       t.string :label
-      t.string :google_place_id
-      t.json :google_address_components
 
       t.timestamps
     end
