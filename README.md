@@ -1,8 +1,8 @@
-# Location search
+# Search by location
 
-A little experiment with `ActiveRecord` to build a location search to solve a problem from a private project. The changes touched a lot of surface in said project so I preferred to achieve what I needed before introducing the other project. A [working sample can be found here](https://rails-location-search.herokuapp.com/).
+Using `ActiveRecord` and `geocoder`
 
-## The problem
+## Motivation
 
 Location data is stored in a separate model, but many models need to be filtered through the location model. Some have indirect associations with the location model, so I needed a scope in those models to abstract this. As en example consider the following association:
 
@@ -12,7 +12,7 @@ Location data is stored in a separate model, but many models need to be filtered
 
 And all the items near a location need to be filtered. It has to be through a scope so other scopes can be chained.
 
-## The solution
+## The gist
 
 Basically an `ActiveRecord` query, found it and tweaked it from [this StackOverflow answer](https://stackoverflow.com/questions/12298836/rails-inner-join-combined-with-geocoding-gem).
 
@@ -27,4 +27,10 @@ Basically an `ActiveRecord` query, found it and tweaked it from [this StackOverf
   # ...
 ```
 
-This can probably be extracted to a concern so other models might take advantage of it. Hope it's useful
+## Also noteworthy
+
+This example is reasonably tested, don't forget to check out the spec directory, and write some tests for your production code
+
+## Contributing
+
+Feel free to open a PR, Issue, or contact me, to suggest improvements or discuss any problems, errors or opinions.
