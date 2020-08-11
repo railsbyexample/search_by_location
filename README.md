@@ -2,6 +2,8 @@
 
 Using `ActiveRecord` and `geocoder`
 
+Check out [the sample](https://rails-search-by-location.herokuapp.com).
+
 ## Motivation
 
 Location data is stored in a separate model, but many models need to be filtered through the location model. Some have indirect associations with the location model, so I needed a scope in those models to abstract this. As en example consider the following association:
